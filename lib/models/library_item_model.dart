@@ -18,4 +18,30 @@ class LibraryItemModel with ChangeNotifier {
     _isFavorite = value;
     notifyListeners();
   }
+
+  LibraryItemModel({
+    this.title,
+    this.id,
+    this.album,
+    this.artist,
+    this.description,
+    this.genre,
+    this.imageUrl,
+    this.playlist,
+    this.year
+  });
+
+  factory LibraryItemModel.fromJson(Map<String, dynamic> jsonMap) {
+    return LibraryItemModel(
+      id: jsonMap['id'],
+      title: jsonMap['title'],
+      album: jsonMap['album'],
+      artist: jsonMap['artist'],
+      description: jsonMap['description'],
+      genre: jsonMap['genre'],
+      imageUrl: jsonMap['imageUrl'],
+      playlist: jsonMap['playlist'],
+      year: jsonMap['year']
+    );
+  }
 }
