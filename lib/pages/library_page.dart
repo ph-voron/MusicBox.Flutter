@@ -3,9 +3,23 @@ import 'package:flutter/material.dart';
 import '../app_styles.dart';
 import '../main_theme.dart';
 
-class LibraryPage extends StatelessWidget {
+class LibraryPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => LibraryPageState();
+}
+
+class LibraryPageState extends State<LibraryPage> {
   @override
   Widget build(BuildContext context) {
+    return RefreshIndicator(
+      onRefresh: () {
+        return Future(() {});
+      },
+      child: _buildList(),
+    );
+  }
+
+  Widget _buildList() {
     return ListView.builder(
         itemCount: 10,
         itemBuilder: (context, index) {
@@ -28,9 +42,9 @@ class LibraryPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text("Title",
-                          style: AppTextStyles.labelPrimary,),
+                            style: AppTextStyles.labelPrimary,),
                           Text("Description",
-                          style: AppTextStyles.labelSecondary,)
+                            style: AppTextStyles.labelSecondary,)
                         ],
                       ),
                     ),
@@ -47,5 +61,4 @@ class LibraryPage extends StatelessWidget {
               ));
         });
   }
-
 }
