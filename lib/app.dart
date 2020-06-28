@@ -2,34 +2,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:musicboxflutter/nav_routes.dart';
 import 'package:musicboxflutter/pages/main_page.dart';
-import 'package:musicboxflutter/repositories/library_repository.dart';
+import 'package:provider/provider.dart';
 
-import 'logging/log.dart';
+import 'models/library_page_model.dart';
 
-class MusicBoxApp extends StatefulWidget {
-
-  final Log log;
-  final LibraryRepository libraryRepository;
-
-  MusicBoxApp({this.log, this.libraryRepository});
-
-  @override
-  State<StatefulWidget> createState() {
-    return MusicBoxAppState();
-  }
-
-}
-
-class MusicBoxAppState extends State<MusicBoxApp> {
+class MusicBoxApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      routes: {
-        NavRoutes.mainPage: (context) {
-          return MainPage();
-        }
-      },
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (BuildContext context) => LibraryPageModel())
+      ],
+      child: MaterialApp(
+        routes: {
+          NavRoutes.mainPage: (context) {
+            return MainPage();
+          }
+        },
+      )
     );
   }
-
 }
