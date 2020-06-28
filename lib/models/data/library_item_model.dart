@@ -1,8 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-class LibraryItemModel with ChangeNotifier {
-  bool _isFavorite;
-
+class LibraryItemModel {
   String id;
   String title;
   String artist;
@@ -11,13 +9,10 @@ class LibraryItemModel with ChangeNotifier {
   String album;
   String playlist;
   String description;
-  Uri imageUrl;
+  String imageUrl;
 
-  bool get isFavorite => _isFavorite;
-  set isFavorite(bool value) {
-    _isFavorite = value;
-    notifyListeners();
-  }
+  bool isFavorite = false;
+
 
   LibraryItemModel({
     this.title,
@@ -39,7 +34,6 @@ class LibraryItemModel with ChangeNotifier {
       artist: jsonMap['artist'],
       description: jsonMap['description'],
       genre: jsonMap['genre'],
-      imageUrl: jsonMap['imageUrl'],
       playlist: jsonMap['playlist'],
       year: jsonMap['year']
     );

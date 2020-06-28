@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:musicboxflutter/models/base_response_model.dart';
-import 'package:musicboxflutter/models/library_item_model.dart';
+
+import 'base_response_model.dart';
+import 'library_item_model.dart';
 
 class LibraryResponseModel extends BaseResponseModel<List<LibraryItemModel>> {
   LibraryResponseModel(Map<String, dynamic> jsonMap) : super(jsonMap);
