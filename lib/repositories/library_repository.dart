@@ -1,4 +1,5 @@
-import 'package:musicboxflutter/models/library_item_model.dart';
+
+import 'package:musicboxflutter/models/data/library_item_model.dart';
 
 abstract class LibraryRepository {
   Future<List<LibraryItemModel>> getAllAsync();
