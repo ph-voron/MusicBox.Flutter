@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:musicboxflutter/models/tab_choice_model.dart';
+import 'file:///D:/temp/%23projects/MusicBox/Flutter/musicbox_flutter/lib/models/data/tab_choice_model.dart';
 import 'package:musicboxflutter/pages/library_page.dart';
 import 'package:musicboxflutter/pages/profile_page.dart';
 
