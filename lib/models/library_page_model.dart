@@ -7,7 +7,6 @@ import 'data/library_item_model.dart';
 class LibraryPageModel extends ChangeNotifier {
 
   List<LibraryItemModel> _response = List();
-  List<String> _favorites = List();
 
   List<LibraryItemModel> get response => _response;
 
@@ -17,19 +16,14 @@ class LibraryPageModel extends ChangeNotifier {
   LibraryPageModel();
 
   Future<void> refreshRequest() async {
-    var items = await _libraryRepository.getAllAsync();
-    _response = items.map((e) {
-      e.isFavorite = _favorites.contains(e.id);
-      return e;
-    }).toList();
+    _response = await _libraryRepository.getAllAsync();
     notifyListeners();
   }
 
-  void setItemFavorite(String id, bool value) {
-    var item = _response.firstWhere((e) => e.id == id, orElse: null);
-    item?.isFavorite = value;
-    if(!_favorites.contains(id))
-      _favorites.add(id);
+  Future<void> setItemFavorite(String id, bool value) async {
+    var existed = _response.firstWhere((e) => e.id == id, orElse: null);
+    existed?.isFavorite = value;
+    await _libraryRepository.setFavorite(id, value);
     notifyListeners();
   }
 }
